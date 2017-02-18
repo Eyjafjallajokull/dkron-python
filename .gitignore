@@ -1,6 +1,7 @@
 *.py[cod]
 venv
 dist
+htmlcov
 
 # C extensions
 *.so

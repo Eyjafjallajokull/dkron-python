@@ -1,12 +1,14 @@
 # dkron-cli
 
+[![Build Status](https://travis-ci.org/Eyjafjallajokull/dkron-cli.svg?branch=master)](https://travis-ci.org/Eyjafjallajokull/dkron-cli)
+
 Command line interface client for [Dkron](http://dkron.io/).
 
-### Prerequisites
+## Prerequisites
 
 * Pytnon 3
 
-### Installing
+## Installing
 
 To install use pip:
 
@@ -21,7 +23,7 @@ git clone https://github.com/Eyjafjallajokull/dkron-cli.git
 python setup.py install
 ```
 
-### Usage
+## Usage
 
 Before you begin, set environment variable `DKRON_API_URL` to point running dkron instance.
 
@@ -55,4 +57,11 @@ You can pass multiple files at once.
 
 ```console
 dkron-cli delete job [job_name]
+```
+
+## Running tests
+
+```console
+make test
+make coverage
 ```
