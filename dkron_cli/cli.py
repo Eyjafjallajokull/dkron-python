@@ -28,6 +28,45 @@ def get():
     pass
 
 
+@get.command(name='status')
+def get_status():
+    '''
+    Get system status
+    '''
+    try:
+        results = api.get_status()
+    except DkronApiException as ex:
+        print('Error while fetching: %s' % str(ex))
+        exit(1)
+    print(json.dumps(results))
+
+
+@get.command(name='leader')
+def get_leader():
+    '''
+    Get system leader
+    '''
+    try:
+        results = api.get_leader()
+    except DkronApiException as ex:
+        print('Error while fetching: %s' % str(ex))
+        exit(1)
+    print(json.dumps(results))
+
+
+@get.command(name='members')
+def get_members():
+    '''
+    Get system members
+    '''
+    try:
+        results = api.get_members()
+    except DkronApiException as ex:
+        print('Error while fetching: %s' % str(ex))
+        exit(1)
+    print(json.dumps(results))
+
+
 @get.command(name='jobs')
 def get_jobs():
     '''
@@ -36,7 +75,7 @@ def get_jobs():
     try:
         results = api.get_jobs()
     except DkronApiException as ex:
-        print('Error while fetching %s: %s' % (job_name, str(ex)))
+        print('Error while fetching: %s' % str(ex))
         exit(1)
     print(json.dumps(results))
 
@@ -50,7 +89,21 @@ def get_job(job_name):
     try:
         results = api.get_job(job_name)
     except DkronApiException as ex:
-        print('Error while fetching %s: %s' % (job_name, str(ex)))
+        print('Error while fetching: %s' % str(ex))
+        exit(1)
+    print(json.dumps(results))
+
+
+@get.command(name='executions')
+@click.argument('job_name')
+def get_executions(job_name):
+    '''
+    Get system executions
+    '''
+    try:
+        results = api.get_executions(job_name)
+    except DkronApiException as ex:
+        print('Error while fetching: %s' % str(ex))
         exit(1)
     print(json.dumps(results))
 
@@ -80,6 +133,19 @@ def apply_job(json_file_path):
             print('Processed: %s' % file_path)
 
 
+@cli.command(name='run')
+@click.argument('job_name')
+def run_job(job_name):
+    '''
+    Execute job on demand
+    '''
+    try:
+        api.run_job(job_name)
+    except DkronApiException as ex:
+        print('Error while executing: %s' % str(ex))
+        exit(1)
+
+
 @cli.group()
 def delete():
     '''
@@ -97,5 +163,5 @@ def delete_job(job_name):
     try:
         api.delete_job(job_name)
     except DkronApiException as ex:
-        print('Error while deleteing %s: %s' % (job_name, str(ex)))
+        print('Error while deleteing: %s' % str(ex))
         exit(1)
