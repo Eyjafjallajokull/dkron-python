@@ -7,8 +7,8 @@ class DkronApiException(Exception):
 
 
 class DkronApi():
-    def __init__(self, dkron_api_url=''):
-        self.base_url = os.environ.get('DKRON_API_URL', dkron_api_url)
+    def __init__(self, dkron_api_url):
+        self.base_url = dkron_api_url
         self.raise_errors = True
 
     def _get_url(self, path):
