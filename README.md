@@ -26,7 +26,7 @@ python setup.py install
 Before you begin, set environment variable `DKRON_API_URL` to point running dkron instance.
 
 ```console
-export DKRON_API_URL=http://my-dcron.example.com
+export DKRON_API_URL=http://my-dkron.example.com
 ```
 
 Alternatively, you can instert `--url` argument to every invocation of dkron-cli.
