@@ -1,0 +1,6 @@
+language: python
+python:
+  - "3.4"
+  - "3.5"
+install: pip install -r requirements.txt -r requirements-dev.txt
+script: nosetests --with-coverage --cover-package=dkron_cli --nocapture -vv
