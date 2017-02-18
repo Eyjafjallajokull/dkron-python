@@ -23,7 +23,7 @@ setup(
     author='Paweł Olejniczak',
     author_email='pawel.olejniczak@gmail.com',
     url='https://github.com/Eyjafjallajokull/dkron-cli',
-    license='BSD',
+    license='MIT',
     long_description=long_description,
     version=__version__,
     download_url='https://github.com/Eyjafjallajokull/dkron-cli/tarball/' + __version__,
