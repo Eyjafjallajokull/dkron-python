@@ -16,6 +16,10 @@ def cli(hosts):
     Command line interface client for Dkron
     '''
     global api
+    if not hosts:
+        print('You must provide %s environment variable OR --hosts option' % _DKRON_ENV_NAME_HOSTS)
+        print('Check docs: https://github.com/Eyjafjallajokull/dkron-python#cli-usage')
+        exit(1)
     api = Dkron(hosts.split(','))
 
 
