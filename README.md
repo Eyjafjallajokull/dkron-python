@@ -25,13 +25,13 @@ python setup.py install
 
 ## CLI Usage
 
-Before you begin, set environment variable `DKRON_API_URL` to point running dkron instance.
+Before you begin, set environment variable `DKRON_HOSTS` to point running dkron instance.
 
 ```console
-export DKRON_API_URL=http://my-dkron.example.com
+export DKRON_HOSTS=http://my-dkron.example.com,http://my-dkron-2.example.com:8080
 ```
 
-Alternatively, you can instert `--url` argument to every invocation of dkron-cli.
+Alternatively, you can instert `--hosts` argument to every invocation of dkron-cli.
 
 #### Fetch all jobs
 

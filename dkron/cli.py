@@ -5,18 +5,18 @@ from pprint import pprint
 
 
 _CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
-_DKRON_ENV_NAME_URL = 'DKRON_API_URL'
+_DKRON_ENV_NAME_HOSTS = 'DKRON_HOSTS'
 api = None
 
 
 @click.group(context_settings=_CONTEXT_SETTINGS)
-@click.option('--url', help='Url of Dkron instance', envvar=_DKRON_ENV_NAME_URL)
-def cli(url):
+@click.option('--hosts', help='Dkron instance URLs, separated with commans', envvar=_DKRON_ENV_NAME_HOSTS)
+def cli(hosts):
     '''
     Command line interface client for Dkron
     '''
     global api
-    api = Dkron(url)
+    api = Dkron(hosts.split(','))
 
 
 @cli.group()
