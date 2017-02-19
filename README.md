@@ -23,7 +23,7 @@ git clone https://github.com/Eyjafjallajokull/dkron-python.git
 python setup.py install
 ```
 
-## Usage
+## CLI Usage
 
 Before you begin, set environment variable `DKRON_API_URL` to point running dkron instance.
 
@@ -77,6 +77,16 @@ dkron-cli delete job [job_name]
 dkron-cli get status
 dkron-cli get leader
 dkron-cli get members
+```
+
+## Library Usage
+
+```python
+from dkron import Dkron
+
+api = Dkron('http://localhost:8080')
+print(api.get_job('my-dkron-job'))
+api.run_job('my-dkron-job')
 ```
 
 ## Running tests
