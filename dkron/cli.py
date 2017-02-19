@@ -1,12 +1,11 @@
 import click
 import json
-from .api import DkronApi, DkronApiException
+from .api import Dkron, DkronException
 from pprint import pprint
 
 
 _CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 _DKRON_ENV_NAME_URL = 'DKRON_API_URL'
-
 api = None
 
 
@@ -17,7 +16,7 @@ def cli(url):
     Command line interface client for Dkron
     '''
     global api
-    api = DkronApi(url)
+    api = Dkron(url)
 
 
 @cli.group()
@@ -35,7 +34,7 @@ def get_status():
     '''
     try:
         results = api.get_status()
-    except DkronApiException as ex:
+    except DkronException as ex:
         print('Error while fetching: %s' % str(ex))
         exit(1)
     print(json.dumps(results))
@@ -48,7 +47,7 @@ def get_leader():
     '''
     try:
         results = api.get_leader()
-    except DkronApiException as ex:
+    except DkronException as ex:
         print('Error while fetching: %s' % str(ex))
         exit(1)
     print(json.dumps(results))
@@ -61,7 +60,7 @@ def get_members():
     '''
     try:
         results = api.get_members()
-    except DkronApiException as ex:
+    except DkronException as ex:
         print('Error while fetching: %s' % str(ex))
         exit(1)
     print(json.dumps(results))
@@ -74,7 +73,7 @@ def get_jobs():
     '''
     try:
         results = api.get_jobs()
-    except DkronApiException as ex:
+    except DkronException as ex:
         print('Error while fetching: %s' % str(ex))
         exit(1)
     print(json.dumps(results))
@@ -88,7 +87,7 @@ def get_job(job_name):
     '''
     try:
         results = api.get_job(job_name)
-    except DkronApiException as ex:
+    except DkronException as ex:
         print('Error while fetching: %s' % str(ex))
         exit(1)
     print(json.dumps(results))
@@ -102,7 +101,7 @@ def get_executions(job_name):
     '''
     try:
         results = api.get_executions(job_name)
-    except DkronApiException as ex:
+    except DkronException as ex:
         print('Error while fetching: %s' % str(ex))
         exit(1)
     print(json.dumps(results))
@@ -127,7 +126,7 @@ def apply_job(json_file_path):
             data = json.load(json_file)
             try:
                 api.apply_job(data)
-            except DkronApiException as ex:
+            except DkronException as ex:
                 print('Error while applying %s: %s' % (file_path, str(ex)))
                 exit(1)
             print('Processed: %s' % file_path)
@@ -141,7 +140,7 @@ def run_job(job_name):
     '''
     try:
         api.run_job(job_name)
-    except DkronApiException as ex:
+    except DkronException as ex:
         print('Error while executing: %s' % str(ex))
         exit(1)
 
@@ -162,6 +161,6 @@ def delete_job(job_name):
     '''
     try:
         api.delete_job(job_name)
-    except DkronApiException as ex:
+    except DkronException as ex:
         print('Error while deleteing: %s' % str(ex))
         exit(1)

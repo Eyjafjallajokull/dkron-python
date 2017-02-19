@@ -2,13 +2,13 @@ import unittest
 import json
 import os
 import requests_mock as rmock
-from dkron_cli.api import DkronApi
+from dkron.api import Dkron
 
 
-class DkronApiTestCase(unittest.TestCase):
+class DkronTestCase(unittest.TestCase):
     def setUp(self):
         self.base_url = 'http://localhost'
-        self.api = DkronApi(self.base_url)
+        self.api = Dkron(self.base_url)
 
     def get_url(self, url):
         return self.base_url + url

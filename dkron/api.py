@@ -2,11 +2,11 @@ import requests
 import os
 
 
-class DkronApiException(Exception):
+class DkronException(Exception):
     pass
 
 
-class DkronApi():
+class Dkron():
     def __init__(self, dkron_api_url):
         self.base_url = dkron_api_url
         self.raise_errors = True

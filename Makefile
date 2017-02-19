@@ -1,4 +1,4 @@
-.PHONY: clean clean-test clean-pyc clean-build docs help
+.PHONY: clean clean-test clean-pyc clean-build help
 .DEFAULT_GOAL := help
 define BROWSER_PYSCRIPT
 import os, webbrowser, sys
@@ -48,7 +48,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 
 test: ## run tests quickly with the default Python
-	nosetests --with-coverage --cover-package=dkron_cli --nocapture -vv
+	nosetests --with-coverage --cover-package=dkron --nocapture -vv
 
 coverage: ## check code coverage quickly with the default Python
 	coverage report -m
