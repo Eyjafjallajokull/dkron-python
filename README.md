@@ -84,8 +84,9 @@ dkron-cli get members
 ```python
 from dkron import Dkron
 
-api = Dkron('http://localhost:8080')
-print(api.get_job('my-dkron-job'))
+hosts = ['http://localhost:8080']
+api = Dkron(hosts)
+print(api.get_job('my-dkron-job')['error_count'])
 api.run_job('my-dkron-job')
 ```
 
