@@ -24,7 +24,7 @@ dependency_links = [x.strip().replace('git+', '') for x in all_reqs if x.startsw
 setup(
     name='dkron',
     description='Command line interface client and python library for Dkron',
-    author='Paweł Olejniczak',
+    author='Pawel Olejniczak',
     author_email='pawel.olejniczak@gmail.com',
     url='https://github.com/Eyjafjallajokull/dkron-python',
     license='MIT',
