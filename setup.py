@@ -3,7 +3,7 @@ from codecs import open
 from os import path
 from pypandoc import convert
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 
 here = path.abspath(path.dirname(__file__))
 
