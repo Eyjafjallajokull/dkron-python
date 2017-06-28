@@ -1,5 +1,6 @@
 import click
 import json
+import os
 from .api import Dkron, DkronException
 from pprint import pprint
 
@@ -146,6 +147,22 @@ def run_job(job_name):
         api.run_job(job_name)
     except DkronException as ex:
         print('Error while executing: %s' % str(ex))
+        exit(1)
+
+
+@cli.command(name='export')
+@click.argument('backup_dir')
+def export(backup_dir):
+    '''
+    Exports all jobs to json files
+    '''
+    try:
+        jobs = api.get_jobs()
+        for job in jobs:
+            filename = os.path.join(backup_dir, job['name'] + '.json')
+            json.dump(job, open(filename, mode='w'), indent=2)
+    except DkronException as ex:
+        print('Error while fetching: %s' % str(ex))
         exit(1)
 
 

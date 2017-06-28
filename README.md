@@ -71,6 +71,12 @@ dkron-cli run [job_name]
 dkron-cli delete job [job_name]
 ```
 
+#### Export all jobs
+
+```console
+dkron-cli export [backup_dir]
+```
+
 #### Cluster status
 
 ```console
